@@ -39,12 +39,12 @@
           </div>
 
           <!-- 导航菜单 -->
-          <div class="flex items-center gap-6">
+          <div class="flex items-end gap-6 pb-2">
             <NuxtLink
               v-for="item in navItems"
               :key="item.id"
               :to="item.path"
-              class="text-white hover:text-red-400 transition-colors flex items-center gap-1"
+              class="text-white hover:text-red-400 transition-colors flex items-center gap-1 font-light"
             >
               <span>{{ item.label }}</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

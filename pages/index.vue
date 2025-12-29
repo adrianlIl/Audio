@@ -16,7 +16,7 @@
 
     <!-- Features Section -->
     <section>
-      <div class="container mx-auto px-4 py-4">
+      <div class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="rounded-lg overflow-hidden transition">
             <img :src="'/speakers.png'" alt="音箱" class="w-full h-auto object-contain block" loading="lazy" />
