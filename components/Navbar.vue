@@ -2,14 +2,14 @@
   <nav class="bg-black text-white">
     <!-- 第一行：Logo 和搜索栏 -->
     <div class="container mx-auto px-4 py-4">
-      <div class="grid grid-cols-3 items-center gap-6">
+      <div class="flex items-center">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center ml-[45px]">
-          <img src="/logo.png" alt="Asena" class="h-[72px] object-contain" />
+          <img src="/logo.png" alt="Asena" class="h-[86px] object-contain" />
         </NuxtLink>
 
-        <!-- 搜索栏 -->
-        <div class="flex justify-center">
+        <!-- 搜索栏 - 对齐到导航菜单位置（全站分類300px + gap-6 24px = 324px） -->
+        <div class="ml-[100px] flex-1">
           <div class="w-full max-w-2xl">
             <div class="flex items-center bg-black rounded-full overflow-hidden">
               <input
@@ -25,9 +25,6 @@
             </div>
           </div>
         </div>
-
-        <!-- 空白区域保持平衡 -->
-        <div></div>
       </div>
     </div>
 
