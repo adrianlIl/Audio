@@ -46,8 +46,35 @@
 
         <!-- 搜索栏 -->
         <div class="hidden md:block md:ml-[100px] md:flex-1">
-          <div class="w-full max-w-2xl mx-auto">
-            <div class="flex items-center bg-black rounded-full overflow-hidden">
+          <div class="w-full max-w-2xl">
+            <div class="flex items-center bg-white rounded-full overflow-hidden">
+              <!-- 分类下拉菜单 -->
+              <div class="relative">
+                <button
+                  @click="isCategoryDropdownOpen = !isCategoryDropdownOpen"
+                  class="flex items-center gap-1 px-4 py-[0.45rem] text-gray-700 hover:bg-gray-100 transition-colors"
+                >
+                  <span class="text-sm whitespace-nowrap">{{ selectedCategory.label }}</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <!-- 下拉菜单 -->
+                <div
+                  v-if="isCategoryDropdownOpen"
+                  class="absolute top-full left-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50 min-w-[150px]"
+                >
+                  <NuxtLink
+                    v-for="item in navItems"
+                    :key="item.id"
+                    :to="item.path"
+                    @click="selectCategory(item); isCategoryDropdownOpen = false"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                  >
+                    {{ item.label }}
+                  </NuxtLink>
+                </div>
+              </div>
               <input
                 type="text"
                 placeholder="搜尋商品、類別、型號"
@@ -65,7 +92,34 @@
 
       <!-- 手机版：搜索栏（在Logo下方） -->
       <div class="md:hidden mt-4">
-        <div class="flex items-center bg-black rounded-full overflow-hidden">
+        <div class="flex items-center bg-white rounded-full overflow-hidden">
+          <!-- 分类下拉菜单 -->
+          <div class="relative">
+            <button
+              @click="isCategoryDropdownOpen = !isCategoryDropdownOpen"
+              class="flex items-center gap-1 px-3 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+            >
+              <span class="text-sm whitespace-nowrap">{{ selectedCategory.label }}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <!-- 下拉菜单 -->
+            <div
+              v-if="isCategoryDropdownOpen"
+              class="absolute top-full left-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50 min-w-[150px]"
+            >
+              <NuxtLink
+                v-for="item in navItems"
+                :key="item.id"
+                :to="item.path"
+                @click="selectCategory(item); isCategoryDropdownOpen = false"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {{ item.label }}
+              </NuxtLink>
+            </div>
+          </div>
           <input
             type="text"
             placeholder="搜尋商品、類別、型號"
@@ -157,5 +211,33 @@ const navItems: NavItem[] = [
 
 // 手机版菜单开关
 const isMenuOpen = ref(false)
+
+// 分类下拉菜单
+const isCategoryDropdownOpen = ref(false)
+const defaultCategory = navItems.find(item => item.id === 3) ?? navItems[0] ?? { id: 0, label: '全部商品', path: '/products' }
+const selectedCategory = ref<NavItem>(defaultCategory) // 默认选择"音響維修"或第一个
+
+// 选择分类
+const selectCategory = (item: NavItem) => {
+  if (item) {
+    selectedCategory.value = item
+    isCategoryDropdownOpen.value = false
+  }
+}
+
+// 点击外部关闭下拉菜单
+onMounted(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement
+    if (!target.closest('.relative')) {
+      isCategoryDropdownOpen.value = false
+    }
+  }
+  document.addEventListener('click', handleClickOutside)
+  
+  onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside)
+  })
+})
 </script>
 
