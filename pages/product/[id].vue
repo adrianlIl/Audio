@@ -45,41 +45,45 @@
               <!-- 右侧：商品信息 -->
               <div class="space-y-6">
                 <!-- 活动标签 -->
-                <div v-if="product.discount" class="flex justify-end">
-                  <span class="bg-red-600 text-white text-sm px-4 py-1 rounded-md">
+                <div v-if="product.discount" class="flex justify-start">
+                  <span class="bg-red-600 text-white text-sm px-4 py-1 rounded-md inline-block">
                     {{ product.discount }}
                   </span>
                 </div>
-
+                
                 <!-- 商品标题 -->
                 <h1 class="text-2xl font-bold text-gray-900 leading-tight">
                   {{ product.name }}
                 </h1>
 
-                <!-- 商品编号 -->
-                <div class="text-gray-600">
-                  <span class="font-medium">編號:</span>
-                  <span class="ml-2">{{ product.code || `MX400(限量黑)` }}</span>
-                </div>
-
-                <!-- 价格信息 -->
+                <!-- 商品编号和价格信息 -->
                 <div class="space-y-2">
-                  <div v-if="product.originalPrice" class="text-gray-500 line-through text-lg">
-                    定價: NT${{ product.originalPrice }}
+                  <!-- 商品编号 -->
+                  <div class="text-gray-600">
+                    <span class="font-medium">編號:</span>
+                    <span class="ml-2">{{ product.code || `MX400(限量黑)` }}</span>
                   </div>
-                  <div class="text-4xl font-bold text-red-600">
-                    NT${{ product.price }}
-                  </div>
-                  <div v-if="product.discount" class="text-sm text-gray-600">
-                    直殺直購價↘結帳享97折優惠(折扣於結帳頁顯示)
+                  
+                  <!-- 原价和折扣说明 -->
+                  <div class="space-y-4">
+                    <div v-if="product.originalPrice" class="text-gray-500 line-through text-lg">
+                      定價: NT${{ product.originalPrice }}
+                    </div>
+                    <div v-if="product.discount" class="text-sm text-gray-600">
+                      直殺直購價↘結帳享97折優惠(折扣於結帳頁顯示)
+                    </div>
                   </div>
                 </div>
-
                 <!-- 预购信息 -->
-                <div v-if="product.isPreOrder" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <p class="text-sm text-gray-700">
+                <div v-if="product.isPreOrder" class="bg-gray-700 rounded-lg p-4">
+                  <p class="text-sm text-white">
                     預購商品預計15-35天出貨,預計出貨日:{{ product.estimatedShippingDate || '2026/2月' }}
                   </p>
+                </div>
+
+                <!-- 价格 -->
+                <div class="text-4xl font-medium text-red-600">
+                  <span class="text-2xl">NT$</span>{{ product.price }}
                 </div>
 
                 <!-- 购买按钮 -->
