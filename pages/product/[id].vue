@@ -2,8 +2,8 @@
   <div class="bg-white min-h-screen">
     <!-- Category List and Product Content Section -->
     <section class="bg-white border-t border-gray-300">
-      <div class="container mx-auto px-4 py-6">
-        <div class="flex gap-4 items-start">
+      <div class="container mx-auto px-4 pb-3">
+        <div class="flex gap-4 items-stretch">
           <!-- 左侧：分类列表 -->
           <CategoryList />
           
