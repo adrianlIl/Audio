@@ -15,9 +15,9 @@
               <input
                 type="text"
                 placeholder="搜尋商品、類別、型號"
-                class="flex-1 px-4 py-3 text-gray-800 outline-none"
+                class="flex-1 px-4 py-[0.45rem] text-gray-800 outline-none bg-white "
               />
-              <button class="bg-red-500 hover:bg-red-600 px-6 py-3.5 transition-colors">
+              <button class="bg-red-500 hover:bg-red-600 px-6 py-[0.6rem] transition-colors">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -38,7 +38,7 @@
           <!-- 全站分类区域（固定宽度） -->
           <div class="w-[250px] flex flex-col justify-end">
             <!-- 全站分类（小标题，不是菜单） -->
-            <div class="bg-red-700 px-4 py-2 rounded w-full">
+            <div class="bg-red-700 px-4 py-2  w-full">
               <span class="text-white font-medium">全站分類</span>
             </div>
           </div>
