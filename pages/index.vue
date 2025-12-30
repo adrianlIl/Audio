@@ -34,27 +34,16 @@
     <!-- Products Preview -->
     <section class="py-16 bg-gray-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">热门产品</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
+        <h2 class="text-3xl font-black mb-12 flex items-center gap-2">
+          <span class="text-orange-500">🔥</span>
+          <span class="font-medium text-black">熱門商品</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <ProductCard
             v-for="product in featuredProducts"
             :key="product.id"
-            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
-          >
-            <div class="h-48 bg-gray-200 flex items-center justify-center">
-              <span class="text-gray-400">产品图片</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">{{ product.name }}</h3>
-              <p class="text-gray-600 mb-4">{{ product.description }}</p>
-              <div class="flex justify-between items-center">
-                <span class="text-2xl font-bold text-blue-600">¥{{ product.price }}</span>
-                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                  查看详情
-                </button>
-              </div>
-            </div>
-          </div>
+            :product="product"
+          />
         </div>
       </div>
     </section>
@@ -64,34 +53,155 @@
 <script setup lang="ts">
 interface Product {
   id: number
+  brand: string
   name: string
-  description: string
+  description?: string
   price: number
+  originalPrice?: number
+  discount?: string
+  image?: string
 }
 
 const featuredProducts: Product[] = [
   {
     id: 1,
-    name: '专业音响系统 A1',
-    description: '高保真音质，适合家庭和商业使用',
-    price: 2999
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
   },
   {
     id: 2,
-    name: '蓝牙音响 B2',
-    description: '便携式设计，无线连接，音质清晰',
-    price: 899
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
   },
   {
     id: 3,
-    name: '家庭影院套装 C3',
-    description: '完整的家庭影院解决方案',
-    price: 5999
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 4,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 5,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 6,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 7,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 8,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 9,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 10,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 11,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 12,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 13,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 14,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
+  },
+  {
+    id: 15,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
   }
 ]
 
 useHead({
-  title: '首页 - 音响网站'
+  title: '首頁 - 音響網站'
 })
 </script>
 
