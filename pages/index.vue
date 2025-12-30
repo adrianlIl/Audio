@@ -36,7 +36,7 @@
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-black mb-12 flex items-center gap-2">
           <span class="text-orange-500">🔥</span>
-          <span class="font-medium text-black">熱門商品</span>
+          <span class="font-bold text-black text-xl">熱門商品</span>
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           <ProductCard

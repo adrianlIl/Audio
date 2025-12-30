@@ -18,7 +18,7 @@
         </div>
         
         <!-- 产品图片 -->
-        <div class="w-full mb-4">
+        <div class="w-full mb-4 bg-white">
           <img 
             :src="product.image || '/placeholder.png'" 
             :alt="product.name"

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white min-h-screen">
     <!-- Category List and Product Content Section -->
-    <section class="bg-gray-100 border-t border-gray-300">
+    <section class="bg-white border-t border-gray-300">
       <div class="container mx-auto px-4 py-6">
         <div class="flex gap-4 items-start">
           <!-- 左侧：分类列表 -->
@@ -129,11 +129,11 @@
           </div>
           
           <!-- 第一张图片 -->
-          <div class="bg-white rounded-lg p-8 flex items-center justify-center">
+          <div class="bg-white rounded-lg p-8 flex items-center justify-start">
             <img
-              :src="product.image || '/behringer.jpg'"
+              :src="product.introImage1 || '/v1.jpg'"
               :alt="product.name"
-              class="max-w-full max-h-[500px] object-contain"
+              class="max-w-full max-h-[600px] object-contain"
             />
           </div>
 
@@ -145,11 +145,11 @@
           </div>
 
           <!-- 第二张图片 -->
-          <div class="bg-white rounded-lg p-8 flex items-center justify-center">
+          <div class="bg-white rounded-lg p-8 flex items-center justify-start">
             <img
-              :src="product.introImage2 || product.image || '/behringer.jpg'"
+              :src="product.introImage2 || '/v2.png'"
               :alt="`${product.name} - 側面`"
-              class="max-w-full max-h-[400px] object-contain"
+              class="max-w-full max-h-[600px] object-contain"
             />
           </div>
         </div>
@@ -204,6 +204,7 @@ interface Product {
   originalPrice?: number
   discount?: string
   image?: string
+  introImage1?: string
   introImage2?: string
   backImage?: string
   isPreOrder?: boolean
