@@ -3,11 +3,13 @@
     <!-- Category List and Banner Section -->
     <section class="bg-white border-t border-gray-300">
       <div class="container mx-auto px-4 pb-3">
-        <div class="flex gap-4 items-stretch">
-          <!-- 分类列表 -->
-          <CategoryList />
+        <div class="flex flex-col md:flex-row gap-4 items-stretch">
+          <!-- 分类列表 - 手机版隐藏，桌面版显示 -->
+          <div class="hidden md:block">
+            <CategoryList />
+          </div>
           <!-- Banner 区域 -->
-          <div class="p-4 flex-1 flex h-[400px]">
+          <div class="p-2 md:p-4 flex-1 flex h-[250px] md:h-[400px]">
             <Banner />
           </div>
         </div>
@@ -38,7 +40,7 @@
           <span class="text-orange-500">🔥</span>
           <span class="font-bold text-black text-xl">熱門商品</span>
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
           <ProductCard
             v-for="product in featuredProducts"
             :key="product.id"

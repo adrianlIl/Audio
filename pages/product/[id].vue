@@ -3,15 +3,17 @@
     <!-- Category List and Product Content Section -->
     <section class="bg-white border-t border-gray-300">
       <div class="container mx-auto px-4 pb-3">
-        <div class="flex gap-4 items-stretch">
-          <!-- 左侧：分类列表 -->
-          <CategoryList />
+        <div class="flex flex-col md:flex-row gap-4 items-stretch">
+          <!-- 左侧：分类列表 - 手机版隐藏，桌面版显示 -->
+          <div class="hidden md:block">
+            <CategoryList />
+          </div>
           
           <!-- 右侧：商品内容 -->
-          <div class="flex-1 bg-white rounded-lg p-6">
+          <div class="flex-1 bg-white rounded-lg p-4 md:p-6">
             <!-- 面包屑导航 -->
-            <nav class="mb-6 text-sm">
-              <ol class="flex items-center gap-2 text-gray-600">
+            <nav class="mb-4 md:mb-6 text-xs md:text-sm">
+              <ol class="flex items-center gap-1 md:gap-2 text-gray-600 flex-wrap">
                 <li>
                   <NuxtLink to="/" class="hover:text-red-600 transition-colors">首頁</NuxtLink>
                 </li>
@@ -24,26 +26,26 @@
                   <NuxtLink to="/products?category=recording" class="hover:text-red-600 transition-colors">錄音</NuxtLink>
                 </li>
                 <li class="text-gray-400">/</li>
-                <li class="text-gray-900 font-medium">{{ product.brand }}</li>
+                <li class="text-gray-900 font-medium truncate">{{ product.brand }}</li>
               </ol>
             </nav>
 
             <!-- 商品主要信息区域 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
               <!-- 左侧：商品图片 -->
               <div>
                 <!-- 主图 -->
-                <div class="bg-white rounded-lg p-8 flex items-center justify-center min-h-[500px]">
+                <div class="bg-white rounded-lg p-4 md:p-8 flex items-center justify-center min-h-[300px] md:min-h-[500px]">
                   <img
                     :src="product.image || '/placeholder.png'"
                     :alt="product.name"
-                    class="max-w-full max-h-[500px] object-contain"
+                    class="max-w-full max-h-[300px] md:max-h-[500px] object-contain"
                   />
                 </div>
               </div>
 
               <!-- 右侧：商品信息 -->
-              <div class="space-y-6">
+              <div class="space-y-4 md:space-y-6">
                 <!-- 活动标签 -->
                 <div v-if="product.discount" class="flex justify-start">
                   <span class="bg-red-600 text-white text-sm px-4 py-1 rounded-md inline-block">
@@ -52,7 +54,7 @@
                 </div>
                 
                 <!-- 商品标题 -->
-                <h1 class="text-2xl font-bold text-gray-900 leading-tight">
+                <h1 class="text-lg md:text-2xl font-bold text-gray-900 leading-tight">
                   {{ product.name }}
                 </h1>
 
@@ -82,12 +84,12 @@
                 </div>
 
                 <!-- 价格 -->
-                <div class="text-4xl font-medium text-red-600">
-                  <span class="text-2xl">NT$</span>{{ product.price }}
+                <div class="text-3xl md:text-4xl font-medium text-red-600">
+                  <span class="text-xl md:text-2xl">NT$</span>{{ product.price }}
                 </div>
 
                 <!-- 购买按钮 -->
-                <div class="flex gap-4">
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
                   <button
                     @click="handleBuyNow"
                     class="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
@@ -109,35 +111,35 @@
     </section>
 
     <!-- 商品介绍和其他内容 -->
-    <div class="container mx-auto px-4 py-6">
+    <div class="container mx-auto px-4 py-4 md:py-6">
       <div class="flex gap-4 items-start">
-        <!-- 左侧：分类列表占位（保持布局一致） -->
-        <div class="w-[300px]"></div>
+        <!-- 左侧：分类列表占位（保持布局一致）- 手机版隐藏 -->
+        <div class="hidden md:block w-[300px]"></div>
         
         <!-- 右侧：商品介绍等内容 -->
         <div class="flex-1">
       <!-- 商品介绍 -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      <section class="mb-8 md:mb-12">
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">
           <span class="text-red-600">|</span> 商品介紹
         </h2>
-        <div class="space-y-6">
+        <div class="space-y-4 md:space-y-6">
           <!-- 第一段文字 -->
           <div class="prose max-w-none">
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">
+            <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">
               {{ product.name }}
             </h3>
-            <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+            <p class="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
               {{ product.introText1 || '高品質的元件和極其牢固的結構,確保使用壽命長\n德國百靈達(耳朵牌)設計 台灣限量黑色MX400\n超小型4軌混音器' }}
             </p>
           </div>
           
           <!-- 第一张图片 -->
-          <div class="bg-white rounded-lg p-8 flex items-center justify-start">
+          <div class="bg-white rounded-lg p-4 md:p-8 flex items-center justify-start">
             <img
               :src="product.introImage1 || '/v1.jpg'"
               :alt="product.name"
-              class="max-w-full max-h-[600px] object-contain"
+              class="max-w-full max-h-[400px] md:max-h-[600px] object-contain"
             />
           </div>
 
@@ -160,11 +162,11 @@
       </section>
 
       <!-- 商品规格 -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      <section class="mb-8 md:mb-12">
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">
           <span class="text-red-600">|</span> 商品規格
         </h2>
-        <div class="space-y-3">
+        <div class="space-y-2 md:space-y-3">
           <div
             v-for="(spec, index) in product.specifications"
             :key="index"
@@ -177,11 +179,11 @@
       </section>
 
       <!-- 相关产品 -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b-2 border-gray-200">
+      <section class="mb-8 md:mb-12">
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6 pb-2 border-b-2 border-gray-200">
           相關產品
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           <ProductCard
             v-for="relatedProduct in relatedProducts"
             :key="relatedProduct.id"

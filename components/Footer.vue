@@ -1,18 +1,18 @@
 <template>
-  <footer class="bg-black text-white mt-20">
-    <div class="container mx-auto px-4 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+  <footer class="bg-black text-white mt-12 md:mt-20">
+    <div class="container mx-auto px-4 py-8 md:py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
         <!-- Logo 区域 -->
-        <div class="md:col-span-1">
+        <div class="sm:col-span-2 md:col-span-1">
           <NuxtLink to="/" class="inline-block mb-4">
-            <img src="/logo.png" alt="Asena" class="h-24 md:h-28 object-contain" />
+            <img src="/logo.png" alt="Asena" class="h-20 md:h-24 lg:h-28 object-contain" />
           </NuxtLink>
         </div>
 
         <!-- 快速链接 -->
         <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">快速链接</h3>
-          <ul class="space-y-2 text-gray-400">
+          <h3 class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white">快速链接</h3>
+          <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-400">
             <li>
               <NuxtLink to="/" class="hover:text-white transition-colors">首頁</NuxtLink>
             </li>
@@ -33,8 +33,8 @@
 
         <!-- 服务信息 -->
         <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">服務資訊</h3>
-          <ul class="space-y-2 text-gray-400">
+          <h3 class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white">服務資訊</h3>
+          <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-400">
             <li>
               <NuxtLink to="/news" class="hover:text-white transition-colors">最新消息</NuxtLink>
             </li>
@@ -52,8 +52,8 @@
 
         <!-- 公司信息 -->
         <div>
-          <h3 class="text-lg font-semibold mb-4 text-white">公司資訊</h3>
-          <div class="space-y-2 text-gray-400 text-sm">
+          <h3 class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white">公司資訊</h3>
+          <div class="space-y-1 md:space-y-2 text-xs md:text-sm text-gray-400">
             <p>斗士文創有限公司</p>
             <p>玉山銀行（808）</p>
             <p>1300940043752</p>
