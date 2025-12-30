@@ -36,7 +36,7 @@
       <div class="container mx-auto px-4 ">
         <div class="flex items-end gap-6">
           <!-- 全站分类区域（固定宽度） -->
-          <div class="w-[250px] flex flex-col justify-end">
+          <div class="w-[300px] flex flex-col justify-end">
             <!-- 全站分类（小标题，不是菜单） -->
             <div class="bg-red-700 px-4 py-2  w-full">
               <span class="text-white font-medium">全站分類</span>

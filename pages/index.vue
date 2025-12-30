@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Category List and Banner Section -->
-    <section class="bg-gray-100 border-t border-gray-300">
+    <section class="bg-white border-t border-gray-300">
       <div class="container mx-auto px-4 pb-3">
         <div class="flex gap-4 items-stretch">
           <!-- 分类列表 -->
@@ -16,7 +16,7 @@
 
     <!-- Features Section -->
     <section>
-      <div class="container mx-auto px-4 py-8">
+      <div class="container mx-auto px-7 py-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="rounded-lg overflow-hidden transition">
             <img :src="'/speakers.png'" alt="音箱" class="w-full h-auto object-contain block" loading="lazy" />
@@ -32,7 +32,7 @@
     </section>
 
     <!-- Products Preview -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-black mb-12 flex items-center gap-2">
           <span class="text-orange-500">🔥</span>

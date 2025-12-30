@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[250px]">
+  <div class="w-[300px] bg-gray-100 rounded-lg">
     <div class="flex flex-col gap-1 py-2">
       <NuxtLink
         v-for="category in categories"
