@@ -80,7 +80,7 @@
                 placeholder="搜尋商品、類別、型號"
                 class="flex-1 px-4 py-[0.45rem] text-gray-800 outline-none bg-white"
               />
-              <button class="bg-red-500 hover:bg-red-600 px-6 py-[0.6rem] transition-colors">
+              <button class="bg-red-700 hover:bg-red-600 px-6 py-[0.6rem] transition-colors rounded-full">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -175,7 +175,7 @@
           </div>
 
           <!-- 导航菜单 -->
-          <div class="flex items-end gap-6 pb-2">
+          <div class="flex items-end gap-10 pb-2 ml-[10px]">
             <NuxtLink
               v-for="item in navItems"
               :key="item.id"
