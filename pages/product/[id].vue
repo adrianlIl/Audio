@@ -1,16 +1,7 @@
 <template>
   <div class="bg-white">
-    <!-- Category List and Product Content Section -->
-    <section class="bg-white border-t border-gray-300">
-      <div class="container mx-auto px-4 pb-3">
-        <div class="flex flex-col md:flex-row gap-4 items-stretch">
-          <!-- 左侧：分类列表 - 手机版隐藏，桌面版显示 -->
-          <div class="hidden md:block">
-            <CategoryList />
-          </div>
-          
-          <!-- 右侧：商品内容 -->
-          <div class="flex-1 bg-white rounded-lg p-4 md:p-6">
+    <!-- 商品内容 -->
+    <div class="bg-white rounded-lg p-4 md:p-6">
             <!-- 面包屑导航和活动标签 - 同一行对齐 -->
             <div class="flex items-center justify-between gap-4 mb-4 md:mb-6 flex-wrap">
               <!-- 面包屑导航 -->
@@ -109,19 +100,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <!-- 商品介绍和其他内容 -->
-    <div class="container mx-auto px-4 py-4 md:py-6">
-      <div class="flex gap-4 items-start">
-        <!-- 左侧：分类列表占位（保持布局一致）- 手机版隐藏 -->
-        <div class="hidden md:block w-[300px]"></div>
-        
-        <!-- 右侧：商品介绍等内容 -->
-        <div class="flex-1">
+    <div class="py-4 md:py-6">
       <!-- 商品介绍 -->
       <section class="mb-8 md:mb-12">
         <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">
@@ -195,8 +177,6 @@
           />
         </div>
       </section>
-        </div>
-      </div>
     </div>
   </div>
 </template>

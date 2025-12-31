@@ -1,16 +1,7 @@
 <template>
   <div class="bg-white">
-    <!-- Category List and Content Section -->
-    <section class="bg-white border-t border-gray-300">
-      <div class="container mx-auto px-4 pb-3">
-        <div class="flex flex-col md:flex-row gap-4 items-stretch">
-          <!-- 左側：分類列表 - 手機版隱藏，桌面版顯示 -->
-          <div class="hidden md:block">
-            <CategoryList />
-          </div>
-
-          <!-- 右側：商品區域 -->
-          <div class="flex-1 w-full bg-white rounded-lg p-4 md:p-6">
+    <!-- 商品區域 -->
+    <div class="w-full bg-white rounded-lg p-4 md:p-6">
             <!-- 麵包屑導航 -->
             <nav class="mb-4 md:mb-6 text-xs md:text-sm">
               <ol class="flex items-center gap-1 md:gap-2 text-gray-600 flex-wrap">
@@ -78,9 +69,6 @@
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
