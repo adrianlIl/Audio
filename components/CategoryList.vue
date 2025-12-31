@@ -1,11 +1,16 @@
 <template>
   <div class="w-[300px]">
-    <div class="flex flex-col gap-1 py-2 bg-gray-100 rounded-lg">
+    <div class="flex flex-col gap-1 py-2 bg-gray-100">
       <NuxtLink
         v-for="category in categories"
         :key="category.id"
         :to="category.path"
-        class="text-gray-800 hover:text-red-500 hover:bg-gray-200 transition-colors flex items-center gap-2 px-2 py-1 rounded"
+        :class="[
+          'transition-colors flex items-center gap-2 px-2 py-1 rounded',
+          isActive(category.path)
+            ? 'text-red-500 bg-red-50 font-semibold'
+            : 'text-gray-800 hover:text-red-500 hover:bg-gray-200'
+        ]"
       >
         <span>{{ category.name }}</span>
         <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,6 +28,8 @@ interface Category {
   path: string
 }
 
+const route = useRoute()
+
 const categories: Category[] = [
   { id: 1, name: '吉他', path: '/categories/guitar' },
   { id: 2, name: '貝斯', path: '/categories/bass' },
@@ -36,5 +43,10 @@ const categories: Category[] = [
   { id: 10, name: '打擊樂器', path: '/categories/percussion' },
   { id: 11, name: '配件', path: '/categories/accessories' }
 ]
+
+// 檢查當前路由是否匹配分類路徑
+const isActive = (path: string) => {
+  return route.path === path
+}
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white min-h-screen">
+  <div class="bg-white">
     <!-- Category List and Product Content Section -->
     <section class="bg-white border-t border-gray-300">
       <div class="container mx-auto px-4 pb-3">
