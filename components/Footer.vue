@@ -11,7 +11,7 @@
 
         <!-- 快速链接 -->
         <div>
-          <h3 class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white">快速链接</h3>
+          <h3 class="text-base md:text-lg font-semibold mb-3 md:mb-4 text-white">快速鏈接</h3>
           <ul class="space-y-1 md:space-y-2 text-sm md:text-base text-gray-400">
             <li>
               <NuxtLink to="/" class="hover:text-white transition-colors">首頁</NuxtLink>

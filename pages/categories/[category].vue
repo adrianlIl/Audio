@@ -1,88 +1,86 @@
 <template>
   <div class="bg-white">
-    <div class="container mx-auto px-4 py-8">
-      <!-- 麵包屑導航 -->
-      <nav class="mb-6">
-        <ol class="flex items-center gap-2 text-sm text-gray-600">
-          <li>
-            <NuxtLink to="/" class="hover:text-red-500 transition-colors">首頁</NuxtLink>
-          </li>
-          <li>
-            <span class="mx-2">></span>
-          </li>
-          <li>
-            <NuxtLink to="/products" class="hover:text-red-500 transition-colors">全部商品</NuxtLink>
-          </li>
-          <li>
-            <span class="mx-2">></span>
-          </li>
-          <li class="text-gray-900 font-medium">{{ categoryName }}</li>
-        </ol>
-      </nav>
-
-      <!-- 主要內容區域：左側分類列表 + 右側商品 -->
-      <div class="flex flex-col md:flex-row gap-4 items-start">
-        <!-- 左側：分類列表 - 手機版隱藏，桌面版顯示 -->
-        <div class="hidden md:block">
-          <CategoryList />
-        </div>
-
-        <!-- 右側：商品區域 -->
-        <div class="flex-1 w-full">
-          <!-- 分類標題 -->
-          <h1 class="text-2xl md:text-3xl font-bold text-black mb-6 md:mb-8">{{ categoryName }}</h1>
-
-          <!-- 商品網格 -->
-          <div v-if="products.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            <ProductCard
-              v-for="product in products"
-              :key="product.id"
-              :product="product"
-            />
+    <!-- Category List and Content Section -->
+    <section class="bg-white border-t border-gray-300">
+      <div class="container mx-auto px-4 pb-3">
+        <div class="flex flex-col md:flex-row gap-4 items-stretch">
+          <!-- 左側：分類列表 - 手機版隱藏，桌面版顯示 -->
+          <div class="hidden md:block">
+            <CategoryList />
           </div>
 
-          <!-- 無商品提示 -->
-          <div v-else class="text-center py-16">
-            <p class="text-gray-500 text-lg">此分類暫無商品</p>
-          </div>
+          <!-- 右側：商品區域 -->
+          <div class="flex-1 w-full bg-white rounded-lg p-4 md:p-6">
+            <!-- 麵包屑導航 -->
+            <nav class="mb-4 md:mb-6 text-xs md:text-sm">
+              <ol class="flex items-center gap-1 md:gap-2 text-gray-600 flex-wrap">
+                <li>
+                  <NuxtLink to="/" class="hover:text-red-600 transition-colors">首頁</NuxtLink>
+                </li>
+                <li class="text-gray-400">/</li>
+                <li>
+                  <NuxtLink to="/products" class="hover:text-red-600 transition-colors">全部商品</NuxtLink>
+                </li>
+                <li class="text-gray-400">/</li>
+                <li class="text-gray-900 font-medium">{{ categoryName }}</li>
+              </ol>
+            </nav>
 
-          <!-- 分頁 -->
-          <div v-if="products.length > 0" class="mt-12 flex justify-center items-center gap-2">
-            <button
-              v-if="currentPage > 1"
-              @click="currentPage = currentPage - 1"
-              class="px-3 py-2 rounded transition-colors bg-white text-gray-700 hover:bg-gray-100"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              v-for="page in totalPages"
-              :key="page"
-              @click="currentPage = page"
-              :class="[
-                'px-4 py-2 rounded transition-colors',
-                currentPage === page
-                  ? 'bg-black text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
-              ]"
-            >
-              {{ String(page).padStart(2, '0') }}
-            </button>
-            <button
-              v-if="currentPage < totalPages"
-              @click="currentPage = currentPage + 1"
-              class="px-3 py-2 rounded transition-colors bg-white text-gray-700 hover:bg-gray-100"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            <!-- 分類標題 -->
+            <h1 class="text-2xl md:text-3xl font-bold text-black mb-6 md:mb-8">{{ categoryName }}</h1>
+
+            <!-- 商品網格 -->
+            <div v-if="products.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              <ProductCard
+                v-for="product in products"
+                :key="product.id"
+                :product="product"
+              />
+            </div>
+
+            <!-- 無商品提示 -->
+            <div v-else class="text-center py-16">
+              <p class="text-gray-500 text-lg">此分類暫無商品</p>
+            </div>
+
+            <!-- 分頁 -->
+            <div v-if="products.length > 0" class="mt-12 flex justify-center items-center gap-2">
+              <button
+                v-if="currentPage > 1"
+                @click="currentPage = currentPage - 1"
+                class="px-3 py-2 rounded transition-colors bg-white text-gray-700 hover:bg-gray-100"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                v-for="page in totalPages"
+                :key="page"
+                @click="currentPage = page"
+                :class="[
+                  'px-4 py-2 rounded transition-colors',
+                  currentPage === page
+                    ? 'bg-black text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                ]"
+              >
+                {{ String(page).padStart(2, '0') }}
+              </button>
+              <button
+                v-if="currentPage < totalPages"
+                @click="currentPage = currentPage + 1"
+                class="px-3 py-2 rounded transition-colors bg-white text-gray-700 hover:bg-gray-100"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

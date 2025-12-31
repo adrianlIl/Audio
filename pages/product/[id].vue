@@ -11,24 +11,34 @@
           
           <!-- 右侧：商品内容 -->
           <div class="flex-1 bg-white rounded-lg p-4 md:p-6">
-            <!-- 面包屑导航 -->
-            <nav class="mb-4 md:mb-6 text-xs md:text-sm">
-              <ol class="flex items-center gap-1 md:gap-2 text-gray-600 flex-wrap">
-                <li>
-                  <NuxtLink to="/" class="hover:text-red-600 transition-colors">首頁</NuxtLink>
-                </li>
-                <li class="text-gray-400">/</li>
-                <li>
-                  <NuxtLink to="/products" class="hover:text-red-600 transition-colors">全部商品</NuxtLink>
-                </li>
-                <li class="text-gray-400">/</li>
-                <li>
-                  <NuxtLink to="/products?category=recording" class="hover:text-red-600 transition-colors">錄音</NuxtLink>
-                </li>
-                <li class="text-gray-400">/</li>
-                <li class="text-gray-900 font-medium truncate">{{ product.brand }}</li>
-              </ol>
-            </nav>
+            <!-- 面包屑导航和活动标签 - 同一行对齐 -->
+            <div class="flex items-center justify-between gap-4 mb-4 md:mb-6 flex-wrap">
+              <!-- 面包屑导航 -->
+              <nav class="text-xs md:text-sm">
+                <ol class="flex items-center gap-1 md:gap-2 text-gray-600 flex-wrap">
+                  <li>
+                    <NuxtLink to="/" class="hover:text-red-600 transition-colors">首頁</NuxtLink>
+                  </li>
+                  <li class="text-gray-400">/</li>
+                  <li>
+                    <NuxtLink to="/products" class="hover:text-red-600 transition-colors">全部商品</NuxtLink>
+                  </li>
+                  <li class="text-gray-400">/</li>
+                  <li>
+                    <NuxtLink to="/products?category=recording" class="hover:text-red-600 transition-colors">錄音</NuxtLink>
+                  </li>
+                  <li class="text-gray-400">/</li>
+                  <li class="text-gray-900 font-medium truncate">{{ product.brand }}</li>
+                </ol>
+              </nav>
+              
+              <!-- 活动标签 -->
+              <div v-if="product.discount" class="flex justify-start mr-[435px]">
+                <span class="bg-red-600 text-white text-sm px-4 py-1 rounded-full inline-block">
+                  {{ product.discount }}
+                </span>
+              </div>
+            </div>
 
             <!-- 商品主要信息区域 -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12">
@@ -46,12 +56,6 @@
 
               <!-- 右侧：商品信息 -->
               <div class="space-y-4 md:space-y-6">
-                <!-- 活动标签 -->
-                <div v-if="product.discount" class="flex justify-start">
-                  <span class="bg-red-600 text-white text-sm px-4 py-1 rounded-md inline-block">
-                    {{ product.discount }}
-                  </span>
-                </div>
                 
                 <!-- 商品标题 -->
                 <h1 class="text-lg md:text-2xl font-bold text-gray-900 leading-tight">
@@ -92,13 +96,13 @@
                 <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
                   <button
                     @click="handleBuyNow"
-                    class="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                    class="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-full transition-colors"
                   >
                     馬上購買
                   </button>
                   <button
                     @click="handleAddToCart"
-                    class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded-lg transition-colors"
+                    class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded-full transition-colors"
                   >
                     加入購物車
                   </button>
