@@ -81,8 +81,8 @@
                   </div>
                 </div>
                 <!-- 预购信息 -->
-                <div v-if="product.isPreOrder" class="bg-gray-700 rounded-lg p-4">
-                  <p class="text-sm text-white">
+                <div v-if="product.isPreOrder">
+                  <p class="text-sm text-white bg-[#5B5B5B] rounded-lg px-4 py-2 inline-block">
                     預購商品預計15-35天出貨,預計出貨日:{{ product.estimatedShippingDate || '2026/2月' }}
                   </p>
                 </div>
