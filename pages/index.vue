@@ -1,9 +1,20 @@
 <template>
   <div>
-    <!-- Banner 区域 -->
-    <div class="pt-2 md:p-4 mt-[23px] flex h-[250px] md:h-[400px]">
-      <Banner />
-    </div>
+    <!-- Category List and Banner Section -->
+    <section class="bg-white border-t border-gray-300">
+      <div class="container mx-auto px-4 pb-3">
+        <div class="flex flex-col md:flex-row gap-4 items-stretch">
+          <!-- 分类列表 - 手机版隐藏，桌面版显示 -->
+          <div class="hidden md:block">
+            <CategoryList />
+          </div>
+          <!-- Banner 区域 -->
+          <div class="pt-2 md:p-4 mt-[23px] flex-1 flex h-[250px] md:h-[400px]">
+            <Banner />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Features Section -->
     <section>
