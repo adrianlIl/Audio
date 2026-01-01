@@ -40,7 +40,7 @@
           <span class="text-orange-500">🔥</span>
           <span class="font-bold text-black text-xl">熱門商品</span>
         </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 items-stretch">
           <ProductCard
             v-for="product in featuredProducts"
             :key="product.id"

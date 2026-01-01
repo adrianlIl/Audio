@@ -21,7 +21,7 @@
             <h1 class="text-2xl md:text-3xl font-bold text-black mb-6 md:mb-8">{{ categoryName }}</h1>
 
             <!-- 商品網格 -->
-            <div v-if="products.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            <div v-if="products.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
               <ProductCard
                 v-for="product in products"
                 :key="product.id"

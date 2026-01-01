@@ -1,7 +1,7 @@
 <template>
-  <NuxtLink :to="`/product/${product.id}`" class="block">
-    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer">
-      <div class="p-4">
+  <NuxtLink :to="`/product/${product.id}`" class="block h-full">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer h-full flex flex-col">
+      <div class="p-4 flex flex-col flex-1">
         <!-- 品牌名称 -->
         <div class="text-sm font-semibold text-black mb-2">{{ product.brand }}</div>
         
@@ -28,7 +28,7 @@
         </div>
         
         <!-- 价格信息 -->
-        <div class="mt-4">
+        <div class="mt-auto pt-4">
           <div v-if="product.originalPrice" class="text-sm text-gray-500 line-through mb-1">
             NT${{ product.originalPrice }}
           </div>
