@@ -1,22 +1,44 @@
 <template>
-  <div class="w-[300px]">
-    <div class="flex flex-col gap-1 py-2 bg-gray-100">
-      <NuxtLink
-        v-for="category in categories"
-        :key="category.id"
-        :to="category.path"
-        :class="[
-          'transition-colors flex items-center gap-2 px-2 py-1 rounded',
-          isActive(category.path)
-            ? 'text-red-500 bg-red-50 font-semibold'
-            : 'text-gray-800 hover:text-red-500 hover:bg-gray-200'
-        ]"
-      >
-        <span>{{ category.name }}</span>
-        <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </NuxtLink>
+  <div class="w-full md:w-[300px]">
+    <!-- 手機版：橫向滾動的標籤式設計 -->
+    <div class="md:hidden overflow-x-auto pb-2 -mx-4 px-4">
+      <div class="flex gap-2 min-w-max">
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.id"
+          :to="category.path"
+          :class="[
+            'transition-colors whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium',
+            isActive(category.path)
+              ? 'text-white bg-red-500 shadow-md'
+              : 'text-gray-700 bg-gray-100 hover:bg-gray-200 active:bg-gray-300'
+          ]"
+        >
+          {{ category.name }}
+        </NuxtLink>
+      </div>
+    </div>
+
+    <!-- 桌面版：垂直列表設計 -->
+    <div class="hidden md:block">
+      <div class="flex flex-col gap-1 py-2 bg-gray-100">
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.id"
+          :to="category.path"
+          :class="[
+            'transition-colors flex items-center gap-2 px-2 py-1 rounded',
+            isActive(category.path)
+              ? 'text-red-500 bg-red-50 font-semibold'
+              : 'text-gray-800 hover:text-red-500 hover:bg-gray-200'
+          ]"
+        >
+          <span>{{ category.name }}</span>
+          <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>

@@ -1,66 +1,4 @@
-<template>
-  <div>
-    <!-- Category List and Banner Section -->
-    <section class="bg-white border-t border-gray-300">
-      <div class="container mx-auto px-4 pb-3">
-        <!-- 手機版：分類列表在上方 -->
-        <div class="md:hidden">
-          <div class="pt-2 pb-3">
-            <CategoryList />
-          </div>
-        </div>
-        
-        <div class="flex flex-col md:flex-row gap-4 items-stretch">
-          <!-- 桌面版：分類列表在左側 -->
-          <div class="hidden md:block md:w-auto">
-            <CategoryList />
-          </div>
-          <!-- Banner 区域 -->
-          <div class="pt-2 md:p-4 mt-[60px] md:mt-0 flex-1 flex h-[250px] md:h-[400px]">
-            <Banner />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section>
-      <div class="container mx-auto pl-4 pr-7 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="rounded-lg overflow-hidden transition">
-            <img :src="'/speakers.png'" alt="音箱" class="w-full h-auto object-contain block" loading="lazy" />
-          </div>
-          <div class="rounded-lg overflow-hidden transition">
-            <img :src="'/repair.png'" alt="音響維修" class="w-full h-auto object-contain block" loading="lazy" />
-          </div>
-          <div class="rounded-lg overflow-hidden transition">
-            <img :src="'/support.png'" alt="聯絡客服" class="w-full h-auto object-contain block" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products Preview -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-black mb-12 flex items-center gap-2">
-          <span class="text-orange-500">🔥</span>
-          <span class="font-bold text-black text-xl">熱門商品</span>
-        </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 items-stretch">
-          <ProductCard
-            v-for="product in featuredProducts"
-            :key="product.id"
-            :product="product"
-          />
-        </div>
-      </div>
-    </section>
-  </div>
-</template>
-
-<script setup lang="ts">
-interface Product {
+export interface Product {
   id: number
   brand: string
   name: string
@@ -72,8 +10,8 @@ interface Product {
   category?: string
 }
 
-// 從分類頁面獲取所有商品數據（與 categories/[category].vue 保持一致）
-const allProducts: Product[] = [
+// 所有商品數據
+export const allProducts: Product[] = [
   // 手機配件 - UAG 手機殼
   {
     id: 1,
@@ -140,6 +78,16 @@ const allProducts: Product[] = [
     price: 299,
     category: 'mobile-accessories',
     image: '/mobile-accessories/phone2.jpg'
+  },
+  // 舊商品數據
+  {
+    id: 9,
+    brand: 'Behringer',
+    name: 'Behringer 耳朵牌 迷你混音器 (限量黑) MICROMIX MX400 四軌/4軌 混音器 單聲道輸出',
+    price: 2000,
+    originalPrice: 2600,
+    discount: '活動下殺97折',
+    image: '/behringer.jpg'
   },
   // 喇叭
   {
@@ -267,14 +215,68 @@ const allProducts: Product[] = [
   }
 ]
 
-// 過濾掉專業維修分類的商品
-const featuredProducts = computed(() => {
-  return allProducts.filter(product => product.category !== 'repair')
-})
+// 分類名稱映射
+export const categoryMap: Record<string, string> = {
+  'mobile-accessories': '手機配件',
+  speakers: '喇叭',
+  players: '二手音箱、喇叭',
+  'repair-cable': '音響線材、導線製作',
+  'repair-bass': 'BASS音箱、音箱頭專業維修',
+  'repair-guitar': '吉他音箱、音箱頭專業維修',
+  'repair-tube': '真空管故障維修、保養、改裝',
+  'repair-mixer': '數位、類比混音控台維修',
+  'repair-light': '舞台用燈光維修',
+  'repair-speaker': '外場喇叭、監聽維修',
+  'repair-mic': '動圈、電容麥克風維修',
+  'repair-buy': '二手樂器、燈光音響器材收購'
+}
 
-useHead({
-  title: '首頁 - 音響網站'
-})
-</script>
+/**
+ * 搜尋商品
+ * @param query 搜尋關鍵字
+ * @param category 可選的分類過濾
+ * @returns 符合條件的商品列表
+ */
+export function searchProducts(query: string, category?: string): Product[] {
+  if (!query.trim()) {
+    return []
+  }
 
+  const searchTerm = query.toLowerCase().trim()
+  
+  return allProducts.filter(product => {
+    // 如果指定了分類，先過濾分類
+    if (category && product.category !== category) {
+      return false
+    }
 
+    // 搜尋商品名稱
+    const nameMatch = product.name.toLowerCase().includes(searchTerm)
+    
+    // 搜尋品牌
+    const brandMatch = product.brand.toLowerCase().includes(searchTerm)
+    
+    // 搜尋分類名稱（中文）
+    const categoryName = categoryMap[product.category || ''] || ''
+    const categoryMatch = categoryName.includes(searchTerm)
+    
+    // 搜尋描述（如果有）
+    const descriptionMatch = product.description?.toLowerCase().includes(searchTerm) || false
+
+    return nameMatch || brandMatch || categoryMatch || descriptionMatch
+  })
+}
+
+/**
+ * 根據分類獲取商品
+ */
+export function getProductsByCategory(category: string): Product[] {
+  return allProducts.filter(product => product.category === category)
+}
+
+/**
+ * 獲取所有商品
+ */
+export function getAllProducts(): Product[] {
+  return allProducts
+}

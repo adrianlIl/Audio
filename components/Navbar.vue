@@ -76,11 +76,16 @@
                 </div>
               </div>
               <input
+                v-model="searchQuery"
                 type="text"
                 placeholder="搜尋商品、類別、型號"
                 class="flex-1 px-4 py-[0.45rem] text-gray-800 outline-none bg-white"
+                @keyup.enter="handleSearch"
               />
-              <button class="bg-red-700 hover:bg-red-600 px-6 py-[0.6rem] transition-colors rounded-full">
+              <button 
+                @click="handleSearch"
+                class="bg-red-700 hover:bg-red-600 px-6 py-[0.6rem] transition-colors rounded-full"
+              >
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -121,11 +126,16 @@
             </div>
           </div>
           <input
+            v-model="searchQuery"
             type="text"
             placeholder="搜尋商品、類別、型號"
             class="flex-1 px-4 py-2 text-gray-800 outline-none bg-white text-sm"
+            @keyup.enter="handleSearch"
           />
-          <button class="bg-red-500 hover:bg-red-600 px-4 py-2 transition-colors">
+          <button 
+            @click="handleSearch"
+            class="bg-red-500 hover:bg-red-600 px-4 py-2 transition-colors"
+          >
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -214,8 +224,22 @@ const isMenuOpen = ref(false)
 
 // 分类下拉菜单
 const isCategoryDropdownOpen = ref(false)
-const defaultCategory = navItems.find(item => item.id === 3) ?? navItems[0] ?? { id: 0, label: '全部商品', path: '/products' }
-const selectedCategory = ref<NavItem>(defaultCategory) // 默认选择"音響維修"或第一个
+const defaultCategory = navItems.find(item => item.id === 2) ?? navItems[0] ?? { id: 0, label: '全部商品', path: '/products' }
+const selectedCategory = ref<NavItem>(defaultCategory) // 默认选择"全部商品"
+
+// 搜尋功能
+const searchQuery = ref('')
+const router = useRouter()
+
+// 處理搜尋
+const handleSearch = () => {
+  const query = searchQuery.value.trim()
+  if (query) {
+    // 只使用搜尋關鍵字，不添加分類過濾，讓搜尋結果包含所有商品
+    const searchPath = `/search?q=${encodeURIComponent(query)}`
+    router.push(searchPath)
+  }
+}
 
 // 选择分类
 const selectCategory = (item: NavItem) => {
