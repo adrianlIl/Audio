@@ -9,6 +9,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // 優化 SSR 和 CSS 加載
+  experimental: {
+    payloadExtraction: false
+  },
+
+  // 確保 CSS 優先加載
   app: {
     head: {
       title: '音响网站',
@@ -21,6 +27,24 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/logo.png' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
+    }
+  },
+
+  // 開發服務器配置
+  devServer: {
+    host: '0.0.0.0'
+  },
+
+  // Vite 配置優化
+  vite: {
+    server: {
+      allowedHosts: true
+    },
+    css: {
+      devSourcemap: false
+    },
+    build: {
+      cssCodeSplit: false
     }
   }
 })

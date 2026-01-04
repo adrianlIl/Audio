@@ -31,17 +31,18 @@ interface Category {
 const route = useRoute()
 
 const categories: Category[] = [
-  { id: 1, name: '吉他', path: '/categories/guitar' },
-  { id: 2, name: '貝斯', path: '/categories/bass' },
-  { id: 3, name: '音箱區', path: '/categories/amplifier' },
-  { id: 4, name: '效果器', path: '/categories/effects' },
-  { id: 5, name: '鍵盤樂器', path: '/categories/keyboard' },
-  { id: 6, name: '耳機', path: '/categories/headphones' },
-  { id: 7, name: '麥克風', path: '/categories/microphone' },
-  { id: 8, name: '錄音', path: '/categories/recording' },
-  { id: 9, name: 'PA音響器材', path: '/categories/pa' },
-  { id: 10, name: '打擊樂器', path: '/categories/percussion' },
-  { id: 11, name: '配件', path: '/categories/accessories' }
+  { id: 1, name: '手機配件', path: '/categories/mobile-accessories' },
+  { id: 2, name: '喇叭', path: '/categories/speakers' },
+  { id: 3, name: '二手音箱、喇叭', path: '/categories/players' },
+  { id: 4, name: '各類音響線材、導線製作', path: '/categories/repair-cable' },
+  { id: 5, name: '各類BASS音箱、音箱頭專業維修', path: '/categories/repair-bass' },
+  { id: 6, name: '各類吉他音箱、音箱頭專業維修', path: '/categories/repair-guitar' },
+  { id: 7, name: '各類真空管故障維修、保養、改裝', path: '/categories/repair-tube' },
+  { id: 8, name: '各類數位、類比混音控台維修', path: '/categories/repair-mixer' },
+  { id: 9, name: '各類舞台用燈光維修', path: '/categories/repair-light' },
+  { id: 10, name: '各類外場喇叭、監聽維修', path: '/categories/repair-speaker' },
+  { id: 11, name: '各類動圈、電容麥克風維修', path: '/categories/repair-mic' },
+  { id: 12, name: '各類二手樂器、燈光音響器材收購', path: '/categories/repair-buy' }
 ]
 
 // 檢查當前路由是否匹配分類路徑
