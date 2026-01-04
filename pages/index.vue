@@ -9,7 +9,7 @@
             <CategoryList />
           </div>
           <!-- Banner 区域 -->
-          <div class="pt-2 md:p-4 mt-[23px] flex-1 flex h-[250px] md:h-[400px]">
+          <div class="pt-2 md:p-4 mt-[60px] flex-1 flex h-[250px] md:h-[400px]">
             <Banner />
           </div>
         </div>

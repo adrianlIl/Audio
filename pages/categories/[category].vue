@@ -204,15 +204,15 @@ const categoryMap: Record<string, string> = {
   'mobile-accessories': '手機配件',
   speakers: '喇叭',
   players: '二手音箱、喇叭',
-  'repair-cable': '各類音響線材、導線製作',
-  'repair-bass': '各類BASS音箱、音箱頭專業維修',
-  'repair-guitar': '各類吉他音箱、音箱頭專業維修',
-  'repair-tube': '各類真空管故障維修、保養、改裝',
-  'repair-mixer': '各類數位、類比混音控台維修',
-  'repair-light': '各類舞台用燈光維修',
-  'repair-speaker': '各類外場喇叭、監聽維修',
-  'repair-mic': '各類動圈、電容麥克風維修',
-  'repair-buy': '各類二手樂器、燈光音響器材收購'
+  'repair-cable': '音響線材、導線製作',
+  'repair-bass': 'BASS音箱、音箱頭專業維修',
+  'repair-guitar': '吉他音箱、音箱頭專業維修',
+  'repair-tube': '真空管故障維修、保養、改裝',
+  'repair-mixer': '數位、類比混音控台維修',
+  'repair-light': '舞台用燈光維修',
+  'repair-speaker': '外場喇叭、監聽維修',
+  'repair-mic': '動圈、電容麥克風維修',
+  'repair-buy': '二手樂器、燈光音響器材收購'
 }
 
 const categoryName = computed(() => categoryMap[category.value] || category.value)

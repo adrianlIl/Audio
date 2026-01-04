@@ -34,15 +34,15 @@ const categories: Category[] = [
   { id: 1, name: '手機配件', path: '/categories/mobile-accessories' },
   { id: 2, name: '喇叭', path: '/categories/speakers' },
   { id: 3, name: '二手音箱、喇叭', path: '/categories/players' },
-  { id: 4, name: '各類音響線材、導線製作', path: '/categories/repair-cable' },
-  { id: 5, name: '各類BASS音箱、音箱頭專業維修', path: '/categories/repair-bass' },
-  { id: 6, name: '各類吉他音箱、音箱頭專業維修', path: '/categories/repair-guitar' },
-  { id: 7, name: '各類真空管故障維修、保養、改裝', path: '/categories/repair-tube' },
-  { id: 8, name: '各類數位、類比混音控台維修', path: '/categories/repair-mixer' },
-  { id: 9, name: '各類舞台用燈光維修', path: '/categories/repair-light' },
-  { id: 10, name: '各類外場喇叭、監聽維修', path: '/categories/repair-speaker' },
-  { id: 11, name: '各類動圈、電容麥克風維修', path: '/categories/repair-mic' },
-  { id: 12, name: '各類二手樂器、燈光音響器材收購', path: '/categories/repair-buy' }
+  { id: 4, name: '音響線材、導線製作', path: '/categories/repair-cable' },
+  { id: 5, name: 'BASS音箱、音箱頭專業維修', path: '/categories/repair-bass' },
+  { id: 6, name: '吉他音箱、音箱頭專業維修', path: '/categories/repair-guitar' },
+  { id: 7, name: '真空管故障維修、保養、改裝', path: '/categories/repair-tube' },
+  { id: 8, name: '數位、類比混音控台維修', path: '/categories/repair-mixer' },
+  { id: 9, name: '舞台用燈光維修', path: '/categories/repair-light' },
+  { id: 10, name: '外場喇叭、監聽維修', path: '/categories/repair-speaker' },
+  { id: 11, name: '動圈、電容麥克風維修', path: '/categories/repair-mic' },
+  { id: 12, name: '二手樂器、燈光音響器材收購', path: '/categories/repair-buy' }
 ]
 
 // 檢查當前路由是否匹配分類路徑
